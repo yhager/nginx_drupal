@@ -1,6 +1,6 @@
 # Overview #
 
-This is a complete nginx configuration for (Drupal)[http://drupal.org] sites. It supports boost, images server and multiple sites. Configuration of generic components is encapsulated, so you only need to define the required stuff, like domain name, web root directory etc.
+This is a complete nginx configuration for [Drupal](http://drupal.org) sites. It supports boost, images server and multiple sites. Configuration of generic components is encapsulated, so you only need to define the required stuff, like domain name, web root directory etc.
 
 This is a complete nginx configuration that is meant to serve as a basis for your setup.
 
