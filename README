@@ -6,7 +6,8 @@ Overview
   so you only need to define the required stuff, like domain name, web
   root directory etc.
 
-  This is a complete nginx configuration that is meant to serve as a basis for your setup.
+  This is a complete nginx configuration that is meant to serve as a
+  basis for your setup.
 
 Features
 
@@ -37,20 +38,29 @@ Features
   * Use http://localhost/nginx_status to monitor server health, with
     tools like munin.
  
+Note
+
+  This same settings and instructions would also work for mediawiki
+  based wiki site. It can be extended to support more platforms (like
+  wordpress). 
+
 Intallation 
 
   # clone
   git clone git://github.com/yhager/nginx_drupal
 
   # point nginx conf file to nginx.conf 
-  vi /etc/init.d/nginx   # your distro might have different location
+  vi /etc/init.d/nginx     # your distro might have different location
+
+  # restart nginx (distro dependant)
+  /etc/init.d/nginx restart
 
   # make sure you have a php-cgi server running on port 3000
   php-cgi -b 127.0.0.1:3000
 
   # create a config file for your site
-  cp conf/example.conf conf/yoursite.conf
-  vi conf/yoursite.conf 
+  cp conf/vhosts.d{example,yoursite}.conf
+  vi conf/vhosts.d/yoursite.conf 
 
   # edit conf/production, conf/staging and conf/dev to point to the directory of each env.
   vi conf/{production,staging,dev}
@@ -67,8 +77,11 @@ Intallation
   * Adding another site
 
     # Copy conf/example.conf and edit it
-    cp conf/example.conf conf/anothersite.conf
-    vi conf/anothersite.conf
+    cp conf/vhosts.d{example,anothersite}.conf
+    vi conf/vhosts.d/anothersite.conf
+
+    # reload nginx
+    /etc/init.d/nginx reload
 
 Troubleshooting
 
