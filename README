@@ -1,15 +1,16 @@
-Overview
+yhager's nginx Drupal config:
 
-  This is a complete nginx configuration for Drupal
-  (http://drupal.org) sites. It supports boost, images server and
-  multiple sites. Configuration of generic components is encapsulated,
-  so you only need to define the required stuff, like domain name, web
-  root directory etc.
+  This is a complete nginx configuration for Drupal[1] sites. It
+  supports boost, images server and multiple sites. Configuration of
+  generic components is encapsulated, so you only need to define the
+  required stuff, like domain name, web root directory etc.
 
   This is a complete nginx configuration that is meant to serve as a
   basis for your setup.
 
-Features
+  [1] http://drupal.org
+
+Features:
 
   * Drupal with clean URL's (of course!)
   
@@ -22,11 +23,11 @@ Features
   * Images server for static files and imagecache manipulation (You
     would want to override theme_imagecache for this).
   
-  * Boost (http://drupal.org/project/boost) supported - if boost files
-    exist they are used (Boost 5.x files scheme)
+  * Boost[2] supported - if boost files exist they are used (Boost 5.x
+    files scheme)
 
   * Gzipped static files are served if they exist (see tne javascript
-    aggregator module (http://drupal.org/project/javascript_aggregator).
+    aggregator module[3]).
 
   * Only allows to run the required PHP files (index.php,
     cron.php). The rest require a htpasswd. This provides a level of
@@ -38,13 +39,16 @@ Features
   * Use http://localhost/nginx_status to monitor server health, with
     tools like munin.
  
-Note
+  [2] http://drupal.org/project/boost
+  [3] http://drupal.org/project/javascript_aggregator
 
-  This same settings and instructions would also work for mediawiki
+Note:
+
+  These same settings and instructions would also work for mediawiki
   based wiki site. It can be extended to support more platforms (like
   wordpress). 
 
-Intallation 
+Intallation: 
 
   # clone
   git clone git://github.com/yhager/nginx_drupal
@@ -83,7 +87,7 @@ Intallation
     # reload nginx
     /etc/init.d/nginx reload
 
-Troubleshooting
+Troubleshooting:
 
   If you get an error about gzip_static line, either comment it out
   (and lose the automatic .gz files match) or recompile nginx with the
@@ -99,15 +103,15 @@ Troubleshooting
 
   ln -s /var/logs/nginx conf/logs
 
-Contribution
+Contribution:
 
   Fork this project on GitHub and send pull requests.
 
-Bugs, Features, Issues
+Bugs, Features, Issues:
 
   File a report on the issue tracker:
   http://github.com/yhager/nginx_drupal/issues/
 
-# Questions
+Questions:
 
   Send me an e-mail (see LICENSE for my address).
