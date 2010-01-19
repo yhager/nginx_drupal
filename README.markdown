@@ -33,7 +33,7 @@ Copy conf/example.conf and edit it to match the new site settings
 # Bugs, Features, Issues
 
   File a report on the issue tracker:
-  http://github.com/yhager/nginx_drupal/issues/
+  (http://github.com/yhager/nginx_drupal/issues/)[http://github.com/yhager/nginx_drupal/issues/]
 
 # Questions
 
