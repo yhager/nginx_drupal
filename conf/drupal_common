@@ -1,0 +1,46 @@
+  charset utf-8;
+
+  # search for already compressed files
+  gzip_static on;
+  gzip on;
+
+  # some images have no mime type
+  default_type image/jpeg;
+
+  # Buffers definition. allows of up to 260k to be passed in memory.
+  client_body_buffer_size 1m;
+  proxy_buffering on;
+  proxy_buffer_size 4k;
+  proxy_buffers 8 32k;
+
+  # 404 generated from php can be rather slow. Uncomment with care
+  #error_page  404              /index.php;
+
+  # disallow access to version control directory, but return 404, not to disclose information
+  location /.git {
+    return 404;
+  }
+  
+  # This is mostly based on Drupal's stock .htaccess
+  location ~* ^.+(\.(txt|engine|inc|info|install|module|profile|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)|code-style\.pl|Entries.*|Repository|Root|Tag|Template)$ {
+    return 404;
+  }
+
+  # serve imagecache files directly or redirect to drupal if they do not exist
+  location ^~ /files/imagecache {
+    access_log off;
+    expires 30d;
+    try_files $uri @drupal;
+  }
+
+  # serve static files directly
+  location ~* ^.+.(jpg|jpeg|gif|css|png|js|ico|html|xml|swf)$ {
+    access_log        off;
+    expires           30d;
+  }
+  
+  # This rewrites pages to be sent to PHP processing
+  location @drupal {
+    rewrite ^/(.*)$ /index.php?q=$1 last;
+  }
+

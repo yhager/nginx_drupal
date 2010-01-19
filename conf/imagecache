@@ -1,0 +1,25 @@
+  include drupal_common;
+
+  location = /index.php {
+    if ($arg_q !~ files/imagecache) {
+      return 403;
+    }
+    include fastcgi;
+  }
+
+  location ~* ^/(apc|info).php$ {
+    auth_basic "Restricted Area";
+    auth_basic_user_file htpasswd;
+    include fastcgi;
+  }
+
+  location ~* ^.+\.php$ {
+    return 404;
+  }
+
+  error_page 404 = @empty;
+
+  location @empty {
+    empty_gif;
+  }
+

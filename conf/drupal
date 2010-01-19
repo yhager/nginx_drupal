@@ -1,0 +1,42 @@
+  include drupal_common;
+
+  location / {
+    try_files $uri @cache;
+  }
+
+  # This will try to see if we have a boost file in place. no harm done if this is not used
+  location @cache {
+    # queries, drupal cookies, or not GET methods, all require PHP processing.
+    if ($query_string ~ ".+") {
+      return 405;
+    }
+    if ($http_cookie ~ "DRUPAL_UID" ) {
+      return 405;
+    }
+    if ($request_method !~ ^(GET|HEAD)$ ) {
+      return 405;
+    }
+    error_page 405 = @drupal;
+
+    # Drupal uses 1978 - I am 4 years older than Dries :)
+    add_header Expires "Tue, 22 Sep 1974 08:00:00 GMT";       
+    add_header Cache-Control "must-revalidate, post-check=0, pre-check=0";
+    try_files /cache/$host/0$uri.html /cache/$host/0${uri}/index.html @drupal;
+  }
+
+  # only a few php files are allowed, this increases the overall server security
+  location ~* ^/(index|boost_stats|cron|xmlrpc).php$ {
+    include fastcgi;
+  }
+
+  # internal pages are protected with a simple htpasswd
+  location ~* ^/(install|update|memcached|apc|info).php$ {
+    auth_basic "Restricted Area";
+    auth_basic_user_file htpasswd;
+    include fastcgi;
+  }
+
+  location ~* ^.+\.php$ {
+    return 404;
+  }
+
