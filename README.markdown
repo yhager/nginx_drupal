@@ -14,6 +14,7 @@ This is a complete nginx configuration that is meant to serve as a basis for you
 * Gzipped static files are served if they exist (see [javascript aggregator module](http://drupal.org/project/javascript_aggregator).
 * Only allows to run the required PHP files (index.php, cron.php). The rest require a htpasswd. This provides a level of protection that is missing from most Drupal installations.
 * Large fastcgi timeout - to allow long opeartions to run on PHP, until PHP times out.
+* Use http://localhost/nginx_status to monitor server health, with tools like munin.
 
 # Intallation #
 
@@ -25,6 +26,15 @@ This is a complete nginx configuration that is meant to serve as a basis for you
 ## Adding another site ##
 
 Copy conf/example.conf and edit it to match the new site settings
+
+# Troubleshooting
+
+If you get an error about gzip_static line, either comment it out (and lose the automatic .gz files match) or recompile nginx with the '--with-http_gzip_static_module' configuration option.
+
+If you get an error about stub_status module missing, comment those lines out, or recompile nginx with '--with-http_stub_status_module' configuration option.
+
+If you want logs file not to be in the same directory as in the configuration file, create a symlink to the logs directory, something like:
+# ln -s /var/logs/nginx conf/logs
 
 # Contribution
 
