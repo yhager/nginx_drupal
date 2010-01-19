@@ -10,6 +10,7 @@ yhager's nginx Drupal config:
 
   [1] http://drupal.org
 
+
 Features:
 
   * Drupal with clean URL's (of course!)
@@ -42,11 +43,13 @@ Features:
   [2] http://drupal.org/project/boost
   [3] http://drupal.org/project/javascript_aggregator
 
+
 Note:
 
   These same settings and instructions would also work for mediawiki
   based wiki site. It can be extended to support more platforms (like
   wordpress). 
+
 
 Intallation: 
 
@@ -87,6 +90,7 @@ Intallation:
     # reload nginx
     /etc/init.d/nginx reload
 
+
 Troubleshooting:
 
   If you get an error about gzip_static line, either comment it out
@@ -97,20 +101,17 @@ Troubleshooting:
   lines out, or recompile nginx with '--with-http_stub_status_module'
   configuration option.
 
-  If you want logs file not to be in the same directory as in the
-  configuration file, create a symlink to the logs directory,
-  something like:
-
-  ln -s /var/logs/nginx conf/logs
 
 Contribution:
 
   Fork this project on GitHub and send pull requests.
 
+
 Bugs, Features, Issues:
 
   File a report on the issue tracker:
   http://github.com/yhager/nginx_drupal/issues/
+
 
 Questions:
 
