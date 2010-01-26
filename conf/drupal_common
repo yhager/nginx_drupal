@@ -22,7 +22,7 @@
   }
   
   # This is mostly based on Drupal's stock .htaccess
-  location ~* ^.+(\.(txt|engine|inc|info|install|module|profile|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)|code-style\.pl|Entries.*|Repository|Root|Tag|Template)$ {
+  location ~* ^.+(\.(txt|engine|inc|info|install|module|profile|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)|code-style\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$ {
     return 404;
   }
 
