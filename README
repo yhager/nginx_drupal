@@ -84,7 +84,7 @@ Intallation:
   * Adding another site
 
     # Copy conf/example.conf and edit it
-    cp conf/vhosts.d{example,anothersite}.conf
+    cp conf/vhosts.d/{example,anothersite}.conf
     vi conf/vhosts.d/anothersite.conf
 
     # reload nginx
