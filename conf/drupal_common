@@ -21,6 +21,11 @@
     return 404;
   }
   
+  # robots.txt is important for search engines
+  location /robots.txt {
+    access_log off;
+  }
+
   # This is mostly based on Drupal's stock .htaccess
   location ~* ^.+(\.(txt|engine|inc|info|install|module|profile|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)|code-style\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$ {
     return 404;
