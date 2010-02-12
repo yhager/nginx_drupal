@@ -32,7 +32,7 @@
   }
 
   # serve imagecache files directly or redirect to drupal if they do not exist
-  location ^~ /files/imagecache {
+  location ~* imagecache {
     access_log off;
     expires 30d;
     try_files $uri @drupal;
