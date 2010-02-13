@@ -21,7 +21,7 @@
     # Drupal uses 1978 - I am 4 years older than Dries :)
     add_header Expires "Tue, 22 Sep 1974 08:00:00 GMT";       
     add_header Cache-Control "must-revalidate, post-check=0, pre-check=0";
-    try_files /cache/$host/0$uri.html /cache/$host/0${uri}/index.html @drupal;
+    try_files /cache/normal/$host/${uri}_.html /cache/perm/$host/${uri}_.css /cache/perm/$host/${uri}_.js /cache/$host/0$uri.html /cache/$host/0${uri}/index.html @drupal;
   }
 
   # only a few php files are allowed, this increases the overall server security
