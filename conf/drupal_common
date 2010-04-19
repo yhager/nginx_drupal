@@ -38,6 +38,13 @@
     try_files $uri @drupal;
   }
 
+  # Drupal 7 image stylef
+  location ~* image/generate {
+    access_log off;
+    expires 30d;
+    try_files $uri @drupal;
+  }
+
   # serve static files directly
   location ~* ^.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|swf|flv)$ {
     access_log        off;
