@@ -51,7 +51,7 @@ Note:
   wordpress). 
 
 
-Intallation: 
+Installation: 
 
   # clone
   git clone git://github.com/yhager/nginx_drupal
